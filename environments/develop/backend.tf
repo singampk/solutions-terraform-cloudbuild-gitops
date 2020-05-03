@@ -13,28 +13,9 @@
 # limitations under the License.
 
 
-locals {
-  "env" = "prod"
-}
-
-provider "google" {
-  project = "${var.project}"
-}
-
-module "vpc" {
-  source  = "../../modules/vpc"
-  project = "${var.project}"
-  env     = "${local.env}"
-}
-
-module "http_server" {
-  source  = "../../modules/http_server"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
-}
-
-module "firewall" {
-  source  = "../../modules/firewall"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
+terraform {
+  backend "gcs" {
+    bucket = "ecp-k8s-wmh-01-a-np-81095a-tfstate"
+    prefix = "env/develop"
+  }
 }

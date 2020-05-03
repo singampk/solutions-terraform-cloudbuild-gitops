@@ -16,6 +16,6 @@
 terraform {
   backend "gcs" {
     bucket = "ecp-k8s-wmh-01-a-np-81095a-tfstate"
-    prefix = "env/prod"
+    prefix = "env/feature"
   }
 }
