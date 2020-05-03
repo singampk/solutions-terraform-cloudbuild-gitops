@@ -2,3 +2,4 @@
 *.tfstate*
 *.tfplan
 key.json
+.idea*
